@@ -103,6 +103,16 @@ The __screen.orientation__ property will not update when the phone is [rotated 1
 
 ## iOS Notes
 
+An optional parameter can be passed to screen.unlockOrientation:
+```js
+// default behaviour
+screen.unlockOrientation() 
+
+// force to unlock all possible orientation modes
+screen.unlockOrientation(true) 
+```
+
+
 The iOS version is a combination of the cordova JS callback _window.shouldRotateToOrientation_ and the workaround to recheck the orientation as implemented in https://github.com/Adlotto/cordova-plugin-recheck-screen-orientation.
 
 __If you have a custom implementation of the _window.shouldRotateToOrientation_ it will have to be removed for the plugin to function as expected.__
