@@ -32,7 +32,7 @@ var exec = require('cordova/exec'),
         'default': [-90,90,0,180]
     };
 
-screenOrientation.setOrientation = function(orientation) {
+screenOrientation.setOrientation = function(orientation, opt) {
     iosOrientation = orientation;
 
     var success = function(res) {
@@ -44,7 +44,7 @@ screenOrientation.setOrientation = function(orientation) {
         }
     };
 
-    exec(success, null, "YoikScreenOrientation", "screenOrientation", ['set', orientation]);
+    exec(success, null, "YoikScreenOrientation", "screenOrientation", ['set', orientation, !!opt]);
 };
 
 module.exports = screenOrientation;
