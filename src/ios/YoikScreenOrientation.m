@@ -36,8 +36,22 @@
         NSString* orientationIn = [arguments objectAtIndex:1];
 
         if ([orientationIn isEqual: @"unlocked"]) {
-            [(CDVViewController*)self.viewController updateSupportedOrientations:self.originalSupportedOrientations];
-            self.originalSupportedOrientations = nil;
+
+            NSNumber* allAvailable = [arguments objectAtIndex:2];
+
+            if( [allAvailable isEqualToNumber: [NSNumber numberWithInteger:1]] ){
+
+                [(CDVViewController*)self.viewController updateSupportedOrientations: @[
+                                                             [NSNumber numberWithInt:UIDeviceOrientationPortrait],
+                                                             [NSNumber numberWithInt:UIDeviceOrientationPortraitUpsideDown],
+                                                             [NSNumber numberWithInt:UIDeviceOrientationLandscapeLeft],
+                                                             [NSNumber numberWithInt:UIDeviceOrientationLandscapeRight]]];
+
+            }
+            else{
+                [(CDVViewController*)self.viewController updateSupportedOrientations:self.originalSupportedOrientations];
+                self.originalSupportedOrientations = nil;
+            }
             return;
         }
         
